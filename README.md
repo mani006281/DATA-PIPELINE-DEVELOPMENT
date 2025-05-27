@@ -14,3 +14,6 @@ dat
 -
 This DATA PIPELINE DEVELOPMENT requires to build an automated process for handling data using python.I had used Pandas and potentially Scikit-Learn.
 I had installed the necessary libraries like pip install pandas scikit-learn.Write python code to load your chosen raw data.Date processing and Transformaton is the core of the pipe line where you clean and prepare the data.And I have used modify features to make them suitable for future use.For this project saving the new CSV file is simplest.I had used Pandas to save the processed dataframe.
+
+![Image](https://github.com/user-attachments/assets/66ab1d6b-d4cf-4aba-9833-04bfd66ca486)
+
