@@ -1,0 +1,37 @@
+import pandas as pd
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+
+# Load the dataset
+data = pd.read_csv('data.csv')
+
+# Data Preprocessing
+data.fillna(method='ffill', inplace=True)
+
+# Define columns for transformation
+numeric_features = ['age', 'income']
+categorical_features = ['gender', 'occupation']
+
+numeric_transformer = Pipeline(steps=[
+    ('scaler', StandardScaler())
+])
+
+categorical_transformer = Pipeline(steps=[
+    ('onehot', OneHotEncoder(handle_unknown='ignore'))
+])
+
+preprocessor = ColumnTransformer(
+    transformers=[
+        ('num', numeric_transformer, numeric_features),
+        ('cat', categorical_transformer, categorical_features)
+    ])
+
+# Apply transformations
+X = preprocessor.fit_transform(data)
+
+# Save the processed data
+processed_data = pd.DataFrame(X)
+processed_data.to_csv('processed_data.csv', index=False)
+
+print("ETL process completed! Data saved as 'processed_data.csv'.")
